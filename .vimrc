@@ -43,3 +43,11 @@ set nobackup        " 백업 파일 생성 안 함
 set nowritebackup   " 다른 프로그램에서 수정할 때 백업 안 함
 set noswapfile      " 스왑 파일 생성 안 함
 
+" 플러그인 vim-plug 설정
+call plug#begin('~/.vim/plugged')
+
+" 멀티커서 플러그인 추가
+Plug 'terryma/vim-multiple-cursors'
+
+call plug#end()
+
