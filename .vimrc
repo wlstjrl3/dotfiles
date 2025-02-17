@@ -4,7 +4,8 @@ syntax on           " 문법 강조 (Syntax Highlight)
 set encoding=utf-8  " UTF-8 인코딩 사용
 set fileencoding=utf-8
 set termguicolors   " 24비트 컬러 지원 (터미널이 지원하면 적용)
-set mouse=r	    " 마우스는 스크롤만 활성화
+" set mouse=r	    " 마우스는 스크롤만 활성화
+set mouse=a         " 마우스를 모든 모드에서 활성화
 set background=dark     " 다크 테마 설정
 colorscheme jellybeans  " Jellybeans 테마 적용
 
@@ -43,11 +44,26 @@ set nobackup        " 백업 파일 생성 안 함
 set nowritebackup   " 다른 프로그램에서 수정할 때 백업 안 함
 set noswapfile      " 스왑 파일 생성 안 함
 
-" 플러그인 vim-plug 설정
-call plug#begin('~/.vim/plugged')
 
-" 멀티커서 플러그인 추가
-Plug 'terryma/vim-multiple-cursors'
+" Vundle 설정
+set nocompatible              " 비호환성 모드 끄기
+filetype off                  " 플러그인 로딩 전에 파일타입 설정을 끄기
 
-call plug#end()
+" Vundle 플러그인 로딩
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" 여기에 설치할 플러그인 추가
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'preservim/nerdtree' " NERDTree 설치
+
+" 플러그인 로딩 끝
+call vundle#end()
+
+filetype plugin indent on    " 파일타입에 맞는 설정 켜기
+
+" NERDTree 자동 열기 설정 (Vim 시작 시 NERDTree가 자동으로 열리도록 설정)
+autocmd vimenter * NERDTree
+" NERDTree에서 파일을 새 창에서 열기
+let NERDTreeQuitOnOpen=0
 
